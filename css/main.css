@@ -23,12 +23,12 @@
 
 #Img {
     color: grey;
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 500px;
 }
 
 #character-tab {
-    height: 20vh;
+    height: 7vh;
     display: flex;
     justify-content: space-around;
     margin: 20px;
