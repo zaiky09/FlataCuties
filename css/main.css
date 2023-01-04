@@ -1,0 +1,35 @@
+#background {
+    background-color: black;
+}
+
+.characters {
+    text-align: center;
+}
+
+#identity {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: whitesmoke;
+    text-decoration: overline;
+}
+
+#total {
+    font-style: italic;
+    font-weight: 400;
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+#Img {
+    color: grey;
+    width: 600px;
+    height: 600px;
+}
+
+#character-tab {
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "flatacuties",
+  "version": "1.0.0",
+  "description": "Vote flatacuties - code challenge 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaiky09/FlataCuties.git"
+  },
+  "keywords": [
+    "flatacuties",
+    "vote",
+    "animals",
+    "cute"
+  ],
+  "author": "Zamil Mozamil Sheikh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zaiky09/FlataCuties/issues"
+  },
+  "homepage": "https://github.com/zaiky09/FlataCuties#readme"
+}
