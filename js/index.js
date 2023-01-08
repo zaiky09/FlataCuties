@@ -1,90 +1,87 @@
-//URL json-server
-const server = 'http://localhost:3000/characters';
-
-//Event listener for loading of DOM
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     fetchData();
-})
+  });
+  const server = "http://localhost:3000/characters";
+  const characterTab = document.getElementById("character-tab");
+  const characterName = document.getElementById("animal-name");
+  const characterImg = document.getElementById("img");
+  const characterVoteCount = document.getElementById("vote-tally");
+  const characterVoteForm = document.getElementById("voting-form");
 
-//Variables for db.json data
-const characterTab = document.querySelector('#character-tab');
-const characterId = document.querySelector('#identity');
-const characterImg = document.querySelector('#Img');
-const voteCount = document.querySelector('#total');
-const voteForm = document.querySelector('#voting');
-
-//creating fetchData variable to fetch
-function fetchData() {
+  //Fetch data funtion
+  function fetchData() {
     fetch(server)
-    .then((resp) => resp.json())
-    .then((data) => {
-        renderCharacters(data)
-    })
-}
-
-//function to render characters
-function renderCharacters (data) {
-    data.forEach ((data) => {
-        const voteTotal = document.createElement('totalV');
-        voteTotal.innerText = data.vote;
-
-        characterTab.appendChild(voteTotal);
-        voteTotal.addEventListener("click", () => {
-            characterId.textContent = data.vote;
-            characterImg.setAttribute("src", data.Img);
-            voteCount.textContent = data.total;
-        });
+      .then((resp) => resp.json())
+      .then((data) => {
+        renderCharacters(data);
+        //updateVotes(data);
+      });
+  }
+  
+  //Function to render the characters 
+  function renderCharacters(data) {
+    data.forEach((data) => {
+      const nameSpan = document.createElement("span");
+      nameSpan.innerText = data.name;
+  
+      characterTab.appendChild(nameSpan);
+      nameSpan.addEventListener("click", () => {
+        characterName.textContent = data.name;
+        characterImg.setAttribute("src", data.image);
+        characterVoteCount.textContent = data.votes;
+      });
     });
-}
-//function; vote update
-voteForm.addEventListener("submit", (event) => {
+  }
+  
+    //Function to update votes
+  characterVoteForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const newVote = parseInt(event.target.vote.value);
-    const voteCount = document.querySelector('#total');
-    let presentv = parseInt(voteCount.textContent);
-    let Votes = (presentv += newVote);
-    voteCount.innerText = Votes;
+    const newVotes = parseInt(event.target.votes.value);
+    const characterVoteCount = document.getElementById("vote-tally");
+    let current = parseInt(characterVoteCount.textContent);
+    let votecount = (current += newVotes);
+    characterVoteCount.innerText = votecount;
 
-    let voteUpdate = {
-        vote: Votes,
+    //Updating the database
+    let updateVotes = {
+      votes: votecount,
     };
-
+  
     fetch(server, {
-        headers: {
-            Accept: "application/json",
-            "Content-Type" : "application/json; charset=UTF-8",
-            Authorization : "",
-        },
-        method: "PATCH",
-        body:JSON.stringify({
-            vote: Votes,
-        }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "",
+      },
+      method: "PATCH",
+      body: JSON.stringify({
+        votes: votecount,
+      }),
     })
-    .then((res) => res.json())
-    .then((json) => console.log(json));
-})
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  });
 
-//adding changes to json data
-const rstBtn =document.querySelector('#resetB')
+  const resetButton = document.querySelector('#rst-btn')
 
-rstBtn.addEventListener("click", (e) => {
+resetButton.addEventListener('click', (e) => {
 
     fetch(server)
     .then(res => res.json())
     .then(characters => {
-        const characterIdentity = characters.find(character => character.name === characterName.textContent)
-
-        //Using PATCH
-        fetch(`${server}/${characterIdentity.id}` , {
+        //const charName = document.querySelector('#name')
+        const charID = characters.find(character => character.name === characterName.textContent)
+        fetch(`${server}/${charID.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
-                vote : '0'
+                votes : '0'
             })
         })
         .then(res => res.json())
-        .then(data => characterVotes.textContent = data.total)
+        .then(data => characterVotes.textContent = data.votes)
     })
+
 })

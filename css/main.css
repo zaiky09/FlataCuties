@@ -1,35 +1,69 @@
-#background {
-    background-color: black;
-}
-
-.characters {
-    text-align: center;
-}
-
-#identity {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 35px;
-    font-weight: bold;
-    color: whitesmoke;
-    text-decoration: overline;
-}
-
-#total {
+html {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav{
+    font-family: Arial, Helvetica, sans-serif ;
     font-style: italic;
-    font-weight: 400;
-    color: whitesmoke;
-    text-decoration: underline;
-}
-
-#Img {
-    color: grey;
-    width: 550px;
-    height: 500px;
-}
-
-#character-tab {
-    height: 7vh;
+    background-color: black;
+    color: white;
+    padding: 2px;
+  }
+  
+  #character-tab {
+    height: 50px;
+    background: goldenrod;
     display: flex;
     justify-content: space-around;
-    margin: 20px;
-}
+    align-items: center;
+    padding-bottom: 1.5vh;
+  }
+  
+  /* #character-bar span {
+    padding: 1%;
+    height: 80%;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    font-size: 3vh;
+    align-items: center;
+    border-radius: 2em;
+    border: 1px solid white;
+  } */
+  
+  .animal-info{
+    height: 550px;
+    padding: 30px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  input[type="submit"], button {
+    background-color: rgb(86, 179, 49);
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  button {
+    background-color: rgb(179, 53, 49);
+    color: white;
+    font-size: 12px;
+    border-radius: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  input[type="text"] {
+    font-size: 30px;
+  }
+  
+  #img{
+    width: 300px;
+    height: 300px;
+  }
